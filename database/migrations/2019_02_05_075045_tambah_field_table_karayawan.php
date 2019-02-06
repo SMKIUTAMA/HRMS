@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreatePasswordResetsTable extends Migration
+class TambahFieldTableKarayawan extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,13 @@ class CreatePasswordResetsTable extends Migration
      */
     public function up()
     {
-        Schema::create('password_resets', function (Blueprint $table) {
-            $table->string('email')->index();
-            $table->string('token');
-            $table->timestamp('created_at')->nullable();
-        });
+      schema::table('karayawan',function(Blueprint $table) {
+        $table->string('usia');
+        $table->string('Agama');
+        $table->string('alamat');
+        $table->date('tanggal_kerja');
+        $table->integer('id_jabatan');
+      });
     }
 
     /**
@@ -27,6 +29,6 @@ class CreatePasswordResetsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('password_resets');
+    schema::drop('karayawan');
     }
 }
